@@ -2,27 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom utility classes */
-.text-red-600 {
-  color: #dc2626;
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 245, 245, 245;
 }
 
-.text-green-600 {
-  color: #16a34a;
-}
-
-.rounded {
-  border-radius: 0.25rem;
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
 }
 
 .line-through {
   text-decoration: line-through;
-}
-
-button {
-  cursor: pointer;
-}
-
-textarea {
-  resize: vertical;
 }
