@@ -1,10 +1,15 @@
 'use client';
 import { useState } from 'react';
 
+interface DiffPart {
+  type: 'deletion' | 'addition' | 'unchanged';
+  text: string;
+}
+
 export default function Home() {
-  const [originalText, setOriginalText] = useState('');
-  const [newText, setNewText] = useState('');
-  const [diffResult, setDiffResult] = useState<any[]>([]);
+  const [originalText, setOriginalText] = useState<string>('');
+  const [newText, setNewText] = useState<string>('');
+  const [diffResult, setDiffResult] = useState<DiffPart[]>([]);
 
   const findInlineDifferences = () => {
     const originalWords = originalText.split(/\s+/);
@@ -12,9 +17,9 @@ export default function Home() {
     
     let i = 0;
     let j = 0;
-    const result = [];
-    let currentDeletion = [];
-    let currentAddition = [];
+    const result: DiffPart[] = [];
+    let currentDeletion: string[] = [];
+    let currentAddition: string[] = [];
     
     const flushChanges = () => {
       if (currentDeletion.length > 0) {
