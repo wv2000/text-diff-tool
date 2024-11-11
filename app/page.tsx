@@ -106,32 +106,32 @@ export default function Home() {
       </div>
       
       <div className="flex justify-center mb-6">
-        <button
-          onClick={findInlineDifferences}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-        >
-          Compare Texts
-        </button>
+      <button
+        onClick={findInlineDifferences}
+        className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-sm"
+      >
+        Compare Texts
+      </button>
       </div>
 
       {diffResult.length > 0 && (
         <div className="border rounded p-4 bg-white shadow-sm">
           <h2 className="font-medium mb-2">Differences:</h2>
           <div className="whitespace-pre-wrap">
-            {diffResult.map((part, index) => (
-              <span
-                key={index}
-                className={
-                  part.type === 'addition'
-                    ? 'bg-green-100 text-green-800'
-                    : part.type === 'deletion'
-                    ? 'bg-red-100 text-red-800 line-through'
-                    : ''
-                }
-              >
-                {part.text}
-              </span>
-            ))}
+      {diffResult.map((part, index) => (
+        <span
+          key={index}
+          className={`px-1 rounded ${
+            part.type === 'addition'
+              ? 'bg-green-100 text-green-800 font-medium'
+              : part.type === 'deletion'
+              ? 'bg-red-100 text-red-800 line-through opacity-75'
+              : ''
+          }`}
+        >
+          {part.text}
+        </span>
+      ))}
           </div>
         </div>
       )}
